@@ -5,7 +5,7 @@ import blogImage3 from "../assets/blog-image_3.jpg";
 function Blog() {
   return (
     <>
-      <section className="text-gray-600 body-font h-screen">
+      <section className="text-gray-600 body-font h-screen flex justify-center items-center">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/3">

@@ -1,7 +1,7 @@
 function Testimonials() {
   return (
     <>
-      <section className="text-gray-600 body-font h-screen">
+      <section className="text-gray-600 body-font h-screen flex justify-center items-center">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
