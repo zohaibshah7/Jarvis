@@ -6,15 +6,15 @@ import {MDBContainer, MDBCol, MDBRow, MDBBtn, MDBIcon, MDBInput, MDBCheckbox } f
 function App() {
     const navigate = useNavigate()
   return (
-    <MDBContainer fluid className="p-3 my-5 h-custom content-center fixed">
+    <MDBContainer fluid className="p-3 my-5 h-custom flex justify-center items-center fixed">
 
       <MDBRow>
 
-        <MDBCol col='10' md='6'>
+        <MDBCol md='6'>
           <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image" />
         </MDBCol>
 
-        <MDBCol col='4' md='6'>
+        <MDBCol md='6' className=''>
 
           <div className="d-flex flex-row align-items-center justify-content-center">
 

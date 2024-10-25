@@ -2,7 +2,7 @@ function ContactUs() {
   return (
     <>
       <section id="contact" className="text-gray-600 body-font h-screen flex justify-center items-center">
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-24 mx-auto mt-14">
           <div className="flex flex-col text-center w-full mb-5">
             <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
               Contact Us
@@ -68,7 +68,7 @@ function ContactUs() {
                 </button>
               </div>
               <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                <a className="text-indigo-500">syedzohaibshah969@gmail.com</a>
+                <a className="text-indigo-500 cursor-default">syedzohaibshah969@gmail.com</a>
                 <p className="leading-normal my-5">
                   49 Smith St.
                   <br />

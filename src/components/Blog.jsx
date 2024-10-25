@@ -5,16 +5,21 @@ import blogImage3 from "../assets/blog-image_3.jpg";
 function Blog() {
   return (
     <>
-      <section id="blogs" className="text-gray-600 body-font h-screen flex justify-center items-center">
+      <section
+        id="blogs"
+        className="text-gray-600 body-font h-screen flex justify-center items-center"
+      >
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/3">
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
-                <img
-                  className="lg:h-48 md:h-36 w-full object-cover object-center"
-                  src={blogImage1}
-                  alt="blog"
-                />
+              <div className="border-2 border-gray-200 border-opacity-60 rounded-lg">
+                <div className="overflow-hidden hover-zoom">
+                  <img
+                    className="lg:h-48 md:h-36 w-100 object-cover object-center"
+                    src={blogImage1}
+                    alt="blog"
+                  />
+                </div>
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     CATEGORY
@@ -76,12 +81,15 @@ function Blog() {
               </div>
             </div>
             <div className="p-4 md:w-1/3">
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <div className="border-2 border-gray-200 border-opacity-60 rounded-lg">
+                <div className="overflow-hidden hover-zoom">
                 <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src={blogImage2}
                   alt="blog"
                 />
+                </div>
+                
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     CATEGORY
@@ -143,12 +151,15 @@ function Blog() {
               </div>
             </div>
             <div className="p-4 md:w-1/3">
-              <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <div className="border-2 border-gray-200 border-opacity-60 rounded-lg">
+                <div className="overflow-hidden hover-zoom">
                 <img
                   className="lg:h-48 md:h-36 w-full object-cover object-center"
                   src={blogImage3}
                   alt="blog"
                 />
+                </div>
+              
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                     CATEGORY
