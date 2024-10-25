@@ -1,3 +1,4 @@
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import Button from "./Button";
 
 function Header() {
@@ -21,10 +22,11 @@ function Header() {
             <span className="ml-3 text-xl">Jarvis</span>
           </a>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <a className="mr-5 hover:text-gray-900 cursor-pointer">Home</a>
-            <a className="mr-5 hover:text-gray-900 cursor-pointer">Features</a>
-            <a className="mr-5 hover:text-gray-900 cursor-pointer">Blogs</a>
-            <a className="mr-5 hover:text-gray-900 cursor-pointer">Testimonials</a>
+            <AnchorLink href='#home' className="mr-5 hover:text-gray-900 cursor-pointer">Home</AnchorLink>
+            <AnchorLink href='#features' className="mr-5 hover:text-gray-900 cursor-pointer">Features</AnchorLink>
+            <AnchorLink href='#blogs' className="mr-5 hover:text-gray-900 cursor-pointer">Blogs</AnchorLink>
+            <AnchorLink href='#testimonials' className="mr-5 hover:text-gray-900 cursor-pointer">Testimonials</AnchorLink>
+            <AnchorLink href='#contact' className="mr-5 hover:text-gray-900 cursor-pointer">Contact Us</AnchorLink>
           </nav>
           <Button label="Login" />
         </div>
