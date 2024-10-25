@@ -1,12 +1,14 @@
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
+  const navigate = useNavigate()
   return (
     <>
       <header className="text-gray-600 bg-indigo-300 body-font shadow-lg w-full fixed">
-        <div className="container mx-auto flex flex-wrap p-1 flex-col md:flex-row items-center">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <div className="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
+          <a className="flex title-font font-medium items-center text-gray-900  cursor-pointer">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -19,7 +21,7 @@ function Header() {
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
             </svg>
-            <span className="ml-3 text-xl">Jarvis</span>
+            <AnchorLink href='#home'><span className="ml-3 text-xl">Jarvis</span></AnchorLink>
           </a>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <AnchorLink href='#home' className="mr-5 hover:text-gray-900 cursor-pointer">Home</AnchorLink>
@@ -28,7 +30,7 @@ function Header() {
             <AnchorLink href='#testimonials' className="mr-5 hover:text-gray-900 cursor-pointer">Testimonials</AnchorLink>
             <AnchorLink href='#contact' className="mr-5 hover:text-gray-900 cursor-pointer">Contact Us</AnchorLink>
           </nav>
-          <Button label="Login" />
+          <Button onClick={()=> navigate("/login")} label="Login" />
         </div>
       </header>
     </>

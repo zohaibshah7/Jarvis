@@ -1,25 +1,11 @@
-import React from "react";
-import "./App.css";
-import Header from "./components/Header"
-import Hero from "./components/Hero"
-import Features from "./components/Features"
-import Blog from "./components/Blog"
-import Testimonials from "./components/Testimonials";
-import ContactUs from "./components/ContactUs"
-import Footer from "./components/Footer";
+import RouterConfig from "./config/RouterConfig";
+import 'mdb-react-ui-kit/dist/css/mdb.min.css';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 
 const App = () => {
   return (
-    <div>
-      <Header/>
-      <Hero/>
-      <Features/>
-      <Blog/>
-      <Testimonials/>
-      <ContactUs/>
-      <Footer/>
-    </div>
+    <RouterConfig/>
   );
 };
 

@@ -1,6 +1,8 @@
 import image from "../assets/image.jpg";
+import { useNavigate } from "react-router-dom";
 
 function Hero() {
+  const navigate = useNavigate()
   return (
     <>
       <section id="home" className="text-gray-600 body-font h-screen flex justify-center items-center">
@@ -18,10 +20,10 @@ function Hero() {
               truffaut hexagon try-hard chambray.
             </p>
             <div className="flex justify-center">
-              <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button onClick={()=> navigate("./login")} label="Login" className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                 LogIn
               </button>
-              <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
+              <button onClick={()=> navigate("./signup")} label= "Signup" className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">
                 SignUp
               </button>
             </div>
