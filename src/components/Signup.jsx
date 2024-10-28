@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   MDBContainer,
   MDBCol,
@@ -8,12 +8,31 @@ import {
   MDBInput,
   MDBCheckbox,
 } from "mdb-react-ui-kit";
+import { auth } from "../config/FireBaseConfig";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
 
 function App() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function handleForm(e) {
+    e.preventDefault();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        toast.success("User Successfully Register", {
+          style: { top: "3.5em" },
+        }); 
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+      });
+  }
+
   return (
-    <MDBContainer
-      className="p-3  flex justify-center items-center fixed h-screen"
-    >
+    <MDBContainer className="p-3  flex justify-center items-center fixed h-screen">
       <MDBCol md="5">
         <img
           src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
@@ -22,7 +41,7 @@ function App() {
         />
       </MDBCol>
 
-      <form>
+      <form onSubmit={handleForm}>
         <MDBRow className="mb-4">
           <MDBCol>
             <MDBInput id="form3Example1" label="First name" />
@@ -36,12 +55,14 @@ function App() {
           type="email"
           id="form3Example3"
           label="Email address"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <MDBInput
           className="mb-4"
           type="password"
           id="form3Example4"
           label="Password"
+          onChange={(e) => setPassword(e.target.value)}
         />
 
         <MDBBtn type="submit" className="mb-4" block>
