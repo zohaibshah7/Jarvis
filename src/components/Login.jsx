@@ -8,7 +8,6 @@ import {
   MDBBtn,
   MDBIcon,
   MDBInput,
-  MDBCheckbox,
 } from "mdb-react-ui-kit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/FireBaseConfig";
@@ -27,11 +26,14 @@ function App() {
         toast.success("User Successfully Login", {
           style: { top: "3.5em" },
         });
+        navigate('/')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(error);
+        toast.error(errorMessage, {
+          style: { top: "3.5em" },
+        });
       });
   }
 

@@ -6,17 +6,16 @@ import Header from "./Header";
 import Hero from "./Hero";
 import Testimonials from "./Testimonials";
 
-
 const Home = () => {
   return (
     <div>
-      <Header/>
-      <Hero/>
-      <Features/>
-      <Blog/>
-      <Testimonials/>
-      <ContactUs/>
-      <Footer/>
+      <Header />
+      <Hero />
+      <Features />
+      <Blog />
+      <Testimonials />
+      <ContactUs />
+      <Footer />
     </div>
   );
 };

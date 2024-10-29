@@ -19,7 +19,9 @@ function Header() {
   return (
     <header
       className={`body-font w-full fixed z-50 transition-all duration-300 ${
-        isScrolled ? "bg-indigo-500 shadow-lg text-white" : "bg-white text-gray-600"
+        isScrolled
+          ? "bg-indigo-500 shadow-lg text-white"
+          : "bg-white text-gray-600"
       }`}
     >
       <div className="container mx-auto flex flex-wrap flex-col md:flex-row items-center">
@@ -32,7 +34,9 @@ function Header() {
             strokeLinejoin="round"
             strokeWidth={2}
             className={`w-10 h-10 p-2 rounded-full ${
-              isScrolled ? "text-indigo-500 bg-white" : "text-white bg-indigo-500"
+              isScrolled
+                ? "text-indigo-500 bg-white"
+                : "text-white bg-indigo-500"
             }`}
             viewBox="0 0 24 24"
           >
@@ -43,19 +47,34 @@ function Header() {
           </AnchorLink>
         </a>
         <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-          <AnchorLink href="#home" className="mr-5 hover:text-gray-200 cursor-pointer">
+          <AnchorLink
+            href="#home"
+            className="mr-5 hover:text-gray-200 cursor-pointer"
+          >
             Home
           </AnchorLink>
-          <AnchorLink href="#features" className="mr-5 hover:text-gray-200 cursor-pointer">
+          <AnchorLink
+            href="#features"
+            className="mr-5 hover:text-gray-200 cursor-pointer"
+          >
             Features
           </AnchorLink>
-          <AnchorLink href="#blogs" className="mr-5 hover:text-gray-200 cursor-pointer">
+          <AnchorLink
+            href="#blogs"
+            className="mr-5 hover:text-gray-200 cursor-pointer"
+          >
             Blogs
           </AnchorLink>
-          <AnchorLink href="#testimonials" className="mr-5 hover:text-gray-200 cursor-pointer">
+          <AnchorLink
+            href="#testimonials"
+            className="mr-5 hover:text-gray-200 cursor-pointer"
+          >
             Testimonials
           </AnchorLink>
-          <AnchorLink href="#contact" className="mr-5 hover:text-gray-200 cursor-pointer">
+          <AnchorLink
+            href="#contact"
+            className="mr-5 hover:text-gray-200 cursor-pointer"
+          >
             Contact Us
           </AnchorLink>
         </nav>

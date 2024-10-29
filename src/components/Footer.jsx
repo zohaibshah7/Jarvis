@@ -4,7 +4,7 @@ function Footer() {
       <footer className="text-gray-600 body-font mb-0">
         <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
           <div className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
-          <svg
+            <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               stroke="currentColor"
@@ -18,7 +18,7 @@ function Footer() {
             </svg>
             <span className="ml-3 text-xl">Jarvis</span>
           </div>
-          
+
           <p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200">
             © 2024 Jarvis —
             <a
