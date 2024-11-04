@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"; // Importing onAuthStateChanged
+import { auth } from "../config/FireBaseConfig";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 import "./components.css";
 import {
   MDBContainer,
@@ -9,27 +13,34 @@ import {
   MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/FireBaseConfig";
-import { toast } from "react-toastify";
 
-function App() {
+function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    // Check user authentication status
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/"); // Redirect if user is logged in
+      }
+    });
+
+    return () => unsubscribe(); // Clean up subscription
+  }, [navigate]);
+
   function handleForm(e) {
     e.preventDefault();
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        toast.success("User Successfully Login", {
+        toast.success("User Successfully Logged In", {
           style: { top: "3.5em" },
         });
-        navigate('/')
+        navigate('/');
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         toast.error(errorMessage, {
           style: { top: "3.5em" },
@@ -38,31 +49,25 @@ function App() {
   }
 
   return (
-    <MDBContainer
-      fluid
-      className="p-3 my-5 h-custom flex justify-center items-center fixed"
-    >
+    <MDBContainer fluid className="p-3 my-5 h-custom flex justify-center items-center fixed">
       <MDBRow>
         <MDBCol md="6">
           <img
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            class="img-fluid"
+            className="img-fluid" // Changed from class to className
             alt="Sample image"
           />
         </MDBCol>
 
-        <MDBCol md="6" className="">
+        <MDBCol md="6">
           <div className="d-flex flex-row align-items-center justify-content-center">
             <p className="lead fw-normal mb-0 me-3">Log in with</p>
-
             <MDBBtn floating size="md" tag="a" className="me-2">
               <MDBIcon fab icon="facebook-f" />
             </MDBBtn>
-
             <MDBBtn floating size="md" tag="a" className="me-2">
               <MDBIcon fab icon="twitter" />
             </MDBBtn>
-
             <MDBBtn floating size="md" tag="a" className="me-2">
               <MDBIcon fab icon="linkedin-in" />
             </MDBBtn>
@@ -108,4 +113,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;

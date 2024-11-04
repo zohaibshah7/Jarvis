@@ -8,25 +8,31 @@ import {
   MDBInput,
 } from "mdb-react-ui-kit";
 import { auth } from "../config/FireBaseConfig";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   function handleForm(e) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         toast.success("User Successfully Register", {
+          position: "top-right",
           style: { top: "3.5em" },
         });
+        navigate("/");
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         toast.error(errorMessage, {
+          position: "top-right",
           style: { top: "3.5em" },
         });
       });
