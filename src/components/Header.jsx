@@ -38,7 +38,7 @@ function Header() {
       .then(() => {
         toast.success("Signed out successfully!", {
           style: { top: "3.5em" },
-        }); // Show success toast
+        });
         navigate("/login"); // Redirect to login page after logout
       })
       .catch((error) => {

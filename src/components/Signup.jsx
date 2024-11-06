@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBContainer,
   MDBCol,
@@ -9,21 +9,31 @@ import {
 } from "mdb-react-ui-kit";
 import { auth } from "../config/FireBaseConfig";
 import { useNavigate } from "react-router-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
+  // Redirect if user is already logged in
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, [navigate]);
 
   function handleForm(e) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        toast.success("User Successfully Register", {
+        toast.success("User Successfully Registered", {
           position: "top-right",
           style: { top: "3.5em" },
         });
@@ -39,11 +49,11 @@ function App() {
   }
 
   return (
-    <MDBContainer className="p-3  flex justify-center items-center fixed h-screen">
+    <MDBContainer className="p-3 flex justify-center items-center fixed h-screen">
       <MDBCol md="5">
         <img
           src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          class="img-fluid"
+          className="img-fluid"
           alt="Phone image"
         />
       </MDBCol>
@@ -73,12 +83,12 @@ function App() {
         />
 
         <MDBBtn type="submit" className="mb-4" block>
-          Sign in
+          Sign up
         </MDBBtn>
 
         <div className="text-center">
           <p>
-            Not a member? <a href="#!">Register</a>
+            Already a member? <a href="#!">Login</a>
           </p>
           <p>or sign up with:</p>
 
@@ -86,15 +96,12 @@ function App() {
             <MDBBtn floating color="secondary" className="mx-1">
               <MDBIcon fab icon="facebook-f" />
             </MDBBtn>
-
             <MDBBtn floating color="secondary" className="mx-1">
               <MDBIcon fab icon="google" />
             </MDBBtn>
-
             <MDBBtn floating color="secondary" className="mx-1">
               <MDBIcon fab icon="twitter" />
             </MDBBtn>
-
             <MDBBtn floating color="secondary" className="mx-1">
               <MDBIcon fab icon="github" />
             </MDBBtn>
@@ -105,4 +112,4 @@ function App() {
   );
 }
 
-export default App;
+export default Signup;

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth"; // Importing onAuthStateChanged
+import { signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth"; 
 import { auth } from "../config/FireBaseConfig";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import "react-toastify/dist/ReactToastify.css";
 import "./components.css";
 import {
   MDBContainer,
@@ -18,16 +18,17 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-    // Check user authentication status
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        navigate("/"); // Redirect if user is logged in
+        navigate("/"); 
+      } else {
+        setIsLoggedIn(false);
       }
     });
-
-    return () => unsubscribe(); // Clean up subscription
+    return () => unsubscribe();
   }, [navigate]);
 
   function handleForm(e) {
@@ -38,7 +39,7 @@ function Login() {
         toast.success("User Successfully Logged In", {
           style: { top: "3.5em" },
         });
-        navigate('/');
+        navigate("/");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -54,7 +55,7 @@ function Login() {
         <MDBCol md="6">
           <img
             src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            className="img-fluid" // Changed from class to className
+            className="img-fluid"
             alt="Sample image"
           />
         </MDBCol>
