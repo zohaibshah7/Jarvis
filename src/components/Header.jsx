@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../config/FireBaseConfig"; // Firebase config
-import { signOut, onAuthStateChanged } from "firebase/auth"; // Importing signOut and onAuthStateChanged
-import { toast } from "react-toastify"; // Importing toast and ToastContainer from react-toastify
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
+import { auth } from "../config/FireBaseConfig";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,13 +24,13 @@ function Header() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user); // User is signed in
+        setUser(user);
       } else {
-        setUser(null); // No user is signed in
+        setUser(null);
       }
     });
 
-    return () => unsubscribe(); // Clean up subscription on unmount
+    return () => unsubscribe();
   }, []);
 
   const handleLogout = () => {
@@ -39,7 +39,7 @@ function Header() {
         toast.success("Signed out successfully!", {
           style: { top: "3.5em" },
         });
-        navigate("/login"); // Redirect to login page after logout
+        navigate("/login");
       })
       .catch((error) => {
         const errorMessage = error.message;
