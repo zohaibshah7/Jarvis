@@ -18,7 +18,6 @@ function Signup() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // Redirect if user is already logged in
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {

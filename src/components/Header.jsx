@@ -113,7 +113,7 @@ function Header() {
               Contact Us
             </AnchorLink>
           </nav>
-          {user ? ( // Show logout button if user is logged in
+          {user ? (
             <Button onClick={handleLogout} label="Logout" />
           ) : (
             <Button onClick={() => navigate("/login")} label="Login" /> // Show login button if user is logged out
